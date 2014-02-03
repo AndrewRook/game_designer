@@ -16,11 +16,13 @@ PROJECT_PATH = os.path.join(SETTINGS_DIR,os.pardir)#os.pardir is just '..' on un
 PROJECT_PATH = os.path.abspath(PROJECT_PATH)
 CARD_GAME_PATH = os.path.join(PROJECT_PATH, 'card_game')
 USER_CONTROL_PATH = os.path.join(PROJECT_PATH, 'user_control')
+PROJECT_TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
 CARD_GAME_TEMPLATE_PATH = os.path.join(CARD_GAME_PATH, 'templates')
 USER_CONTROL_TEMPLATE_PATH = os.path.join(USER_CONTROL_PATH, 'templates')
 STATIC_PATH = os.path.join(PROJECT_PATH, 'static')
 
 LOGIN_URL = '/usercontrol/login/'
+LOGIN_REDIRECT_URL = ''
 
 
 # Quick-start development settings - unsuitable for production
@@ -40,6 +42,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    PROJECT_TEMPLATE_PATH,
     CARD_GAME_TEMPLATE_PATH,
     USER_CONTROL_TEMPLATE_PATH,
     )
@@ -60,6 +63,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'user_control',
     'card_game',
+    'south',
 )
 
 MIDDLEWARE_CLASSES = (
