@@ -7,5 +7,5 @@ class UserProfile(models.Model):
 
     display_name = models.CharField(max_length=128)
     can_direct_edit = models.BooleanField(default=False)
-    def __unicode(self):
+    def __unicode__(self):
         return self.user.username

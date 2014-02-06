@@ -21,8 +21,8 @@ CARD_GAME_TEMPLATE_PATH = os.path.join(CARD_GAME_PATH, 'templates')
 USER_CONTROL_TEMPLATE_PATH = os.path.join(USER_CONTROL_PATH, 'templates')
 STATIC_PATH = os.path.join(PROJECT_PATH, 'static')
 
-LOGIN_URL = '/usercontrol/login/'
-LOGIN_REDIRECT_URL = ''
+LOGIN_URL = '/user_control/login/'
+LOGIN_REDIRECT_URL = '/'
 
 
 # Quick-start development settings - unsuitable for production
@@ -60,7 +60,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
+    #'django.contrib.sites',
     'user_control',
     'card_game',
     'south',

@@ -4,11 +4,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'game_designer.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-    #url(r'^$', 'game_designer.views.home', name='home'),
-    url(r'^$', include('card_game.urls')),
+    url(r'',include('card_game.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^user_control/', include('user_control.urls')),
     url(r'^card_game/', include('card_game.urls')),
