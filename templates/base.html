@@ -17,13 +17,13 @@
 
   <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
-      <div class="container">
+      <div class="container-fluid">
 	<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
 	  <span class="icon-bar"></span>
 	  <span class="icon-bar"></span>
 	  <span class="icon-bar"></span>
 	</button>
-
+	<li class="brand">Game Designer</li>
 	<div class="nav-collapse collapse">
 	  <u1 class="nav pull-right">
 	    {% if user.is_authenticated %}
@@ -36,8 +36,8 @@
 	  </u1>
 	  <u1 class="nav">
 	    {% if user.is_authenticated %}
-	    <li><a href="/rango/restricted/">Restricted-doesn't work</a></li>
-	    <li><a href="/rango/add_category/">Add Category-doesn't work</a></li>
+	    <!--<li><a href="/rango/restricted/">Restricted-doesn't work</a></li>
+	    <li><a href="/rango/add_category/">Add Category-doesn't work</a></li>-->
 	    {% endif %}
 	  </u1>
 	</div>
@@ -50,7 +50,13 @@
   <div class="row-fluid">
     <div class="span3">
       <div class="well sidebar-nav">
-	<!-- Empty for now -->
+	<u1 class="nav nav-list">
+	  <!-- <li class="nav-header">wooo</li> -->
+	  <!-- <li class="sidebar-brand">hello</li> -->
+	  <!-- <li>world</li> -->
+	  {% block side_nav_block %}
+	  {% endblock %}
+	</u1>
       </div>
       <!--/.well -->
     </div>

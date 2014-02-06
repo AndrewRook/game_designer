@@ -1,4 +1,5 @@
 from django.db import models
+from user_control.models import UserProfile
 
 # Create your models here.
 class Card(models.Model):
@@ -12,6 +13,8 @@ class Card(models.Model):
     text = models.TextField()
     power = models.IntegerField(default=0)
     toughness = models.IntegerField(default=1)
+    change_author = models.ForeignKey(UserProfile)
+    change_date = models.DateField(auto_now_add=True)
 
     def __unicode__(self):
         return self.name

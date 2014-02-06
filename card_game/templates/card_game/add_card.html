@@ -1,0 +1,27 @@
+{% extends 'card_game/navs.html' %}
+
+{% block title %} - Add Card{% endblock %}
+
+{% block body_block %}
+<div class="hero-unit">
+        <h1>Add a Card</h1>
+  <br>
+  <div class="container">
+            <form class="span6" id="category_form" method="post" action="/card_game/add_card/">
+
+                {% csrf_token %}
+                {% for hidden in form.hidden_fields %}
+                    {{ hidden }}
+                {% endfor %}
+
+                {% for field in form.visible_fields %}
+                    {{ field.errors }}
+                    {{ field.help_text}}
+                    {{ field }}<br \>
+                {% endfor %}
+
+                <button class="btn btn-primary" type="submit" name="submit">Create Card</button>
+            </form>
+    </div>
+</div>
+{% endblock %}
