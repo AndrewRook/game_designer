@@ -4,9 +4,14 @@ from card_game.models import Card,Unique_Card,Version,Unique_Version
 class CardForm(forms.ModelForm):
     name = forms.CharField(help_text="Card Name:")
     type = forms.CharField(widget=forms.Select(choices=Card.card_type_choices), help_text="Card Type:")
+    cost = forms.IntegerField(help_text="Cost:")
+    art = forms.ImageField(help_text="Upload Card Art (optional):", required=False)
+    text = forms.CharField(widget=forms.Textarea(), help_text="Card Text:", required=False)
+    power = forms.IntegerField(help_text="Power:",required=False)
+    toughness = forms.IntegerField(help_text="Toughness:",required=False)
     class Meta:
         model = Card
-        fields = ['name','type']
+        fields = ['name','type','cost','art','text','power','toughness']
     
     # creature = 'CR'
     # spell = 'SP'
@@ -21,17 +26,3 @@ class CardForm(forms.ModelForm):
     # change_author = models.ForeignKey(UserProfile)
     # change_date = models.DateField(auto_now_add=True)
 
-# class UserForm(forms.ModelForm):
-#     username = forms.CharField(help_text="Please enter a username.")
-#     email = forms.CharField(help_text="Please enter your email.")
-#     password = forms.CharField(widget=forms.PasswordInput(), help_text="Please enter a password.")
-
-#     class Meta:
-#         model = User
-#         fields = ['username', 'email', 'password']
-
-# class UserProfileForm(forms.ModelForm):
-#     display_name = forms.CharField(help_text="What should we call you?")
-#     class Meta:
-#         model = UserProfile
-#         fields = ['display_name']#Hiding the can_direct_edit 

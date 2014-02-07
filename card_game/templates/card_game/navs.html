@@ -2,8 +2,8 @@
 
 {% block side_nav_block %}
 <li class="nav-header">Card Game</li>
-<li><a href="/card_game/card_list">Card List</a></li>
+<li><a href="/card_game/card_list/">Card List</a></li>
 {% if user.is_authenticated %}
-<li><a href="/card_game/add_card">Create a Card</a></li>
+<li><a href="/card_game/add_card/">Create a Card</a></li>
 {% endif %}
 {% endblock %}

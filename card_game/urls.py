@@ -5,6 +5,6 @@ from django.conf import settings
 
 urlpatterns = patterns('',
                        url(r'^$', views.index, name='index'),
-                       #url(r'^restricted$', views.restricted, name='restricted'),
-                       url(r'^add_card$', views.add_card, name='add card'),
+                       #url(r'^restricted/$', views.restricted, name='restricted'),
+                       url(r'^add_card/$', views.add_card, name='add card'),
                        )

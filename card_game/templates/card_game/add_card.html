@@ -4,22 +4,26 @@
 
 {% block body_block %}
 <div class="hero-unit">
+  {% if message %}
+  <li>{{ message }}</li>
+  {% endif %}
         <h1>Add a Card</h1>
   <br>
   <div class="container">
             <form class="span6" id="category_form" method="post" action="/card_game/add_card/">
-
+            <!-- <form class="form-horizontal" role="form" id="category_form" method="post" action="/card_game/add_card/"> -->
                 {% csrf_token %}
                 {% for hidden in form.hidden_fields %}
                     {{ hidden }}
                 {% endfor %}
-
+		<table class="table table-condensed">
                 {% for field in form.visible_fields %}
-                    {{ field.errors }}
-                    {{ field.help_text}}
-                    {{ field }}<br \>
+		<tr>
+                    <td>{{ field.help_text}}</td>
+                    <td>{{ field }}</td>
+                    <td>{{ field.errors }}</td></tr>
                 {% endfor %}
-
+		</table>
                 <button class="btn btn-primary" type="submit" name="submit">Create Card</button>
             </form>
     </div>
