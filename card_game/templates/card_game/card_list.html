@@ -1,0 +1,59 @@
+{% extends 'card_game/navs.html' %}
+
+{% load card_game_extras %}
+
+{% block title %} - Current Cards{% endblock %}
+
+{% block body_block %}
+<div class="hero-unit">
+ {% if firstcardform != None %}
+ {% for type,cards in cardlist %}
+ <li>{{ type }}s</li>
+ <table id="{{ type }}" class="tablesorter">
+   <thead>
+      {% for field in firstcardform %}
+      {% if field.label != "Type" %}
+      <th>{{ field.label }}</th>
+      {% endif %}
+      {% endfor %}
+      {% if user.is_authenticated %}
+      <th></th><th></th>
+      {% endif %}
+    </thead>
+   <tbody>
+  {% for card in cards %}
+  <tr>
+  <!--get field values (excluding type)-->
+  {% for field in card %}
+  {% if field.label != "Type" %}
+  <td>{{ field.data }}</td> 
+  {% endif %}
+  {% endfor %}
+  {% if user.is_authenticated %}
+  <td><a href="/card_game/edit_card/temp/">Edit</a></td>
+  <td><a href="/card_game/delete_card/temp/">Delete</a></td>
+  {% endif %}
+  </tr>
+  {% endfor %}
+   </tbody>
+ </table>
+ {% endfor %}
+ {% endif %}
+{% if user.is_authenticated %}
+<li><a href="/card_game/add_card/">Create a Card</a></li>
+{% endif %}
+</div>
+{% endblock %}
+
+{% block script_block %}
+ {% for type,cards in cardlist %}
+<script>
+	$(function() {
+		$("#{{ type }}").tablesorter({theme:'blue',sortList:[[0,0],[2,1]],widgets:['zebra'],widthFixed:true});
+		$(".compatibility").tablesorter({theme:'blue',sortList:[[0,0]],widthFixed:true});
+		$("table.options").tablesorter({theme:'blue',sortList:[[0,0]],headers:{3:{sorter:false},4:{sorter:false}},widgets:['stickyHeaders'],widthFixed:true});
+		$("#method,#event").tablesorter({theme:'blue',sortList:[[0,0]],headers:{1:{sorter:false},2:{sorter:false}},widgets:['stickyHeaders'],widthFixed:true});
+	});
+</script>
+{% endfor %}
+{% endblock %}

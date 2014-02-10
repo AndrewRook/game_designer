@@ -12,8 +12,8 @@ class Card(models.Model):
     cost = models.IntegerField(default=0)
     art = models.ImageField(upload_to='card_images',blank=True)
     text = models.TextField(default='')
-    power = models.IntegerField(default=0)
-    toughness = models.IntegerField(default=1)
+    power = models.IntegerField(default=0,null=True)
+    toughness = models.IntegerField(default=1,null=True)
     change_author = models.ForeignKey(UserProfile)
     change_date = models.DateField(auto_now_add=True)
 
@@ -21,7 +21,7 @@ class Card(models.Model):
         return self.name
     
 class Unique_Card(models.Model):
-    card_id = models.ForeignKey(Card)
+    card_id = models.OneToOneField(Card)
 
     def __unicode__(self):
         return str(self.pk)

@@ -79,8 +79,14 @@
   </div>
 </footer>
 
-<script src="{% static 'js/jquery-2.0.3.min.js' %}"></script>
+<script src="{% static 'js/jquery-2.1.0.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
+<!-- Tablesorter: required -->
+<link href="/static/test/theme.blue.css" rel="stylesheet">
+<script src="/static/test/jquery.tablesorter.js"></script>
+<script src="/static/test/jquery.tablesorter.widgets.js"></script>
+{% block script_block %}
+{% endblock %}
 
 
 </body>
